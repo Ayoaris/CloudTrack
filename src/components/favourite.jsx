@@ -2,6 +2,9 @@ const Favourite = () => {
   return (
     <div className="fav-section">
       <div className="fav-card">
+        <div className="x-btn">
+          <button className="edit"> x </button>
+        </div>
         <div className="top-card">
           <p>Abu Dahbi, AE</p>
           <p> ICON</p>

@@ -6,6 +6,9 @@ const Navbar = () => {
         <img src={logo} alt="logo" />
         <p>ClimaTrack</p>
       </div>
+      <div className="search">
+        <input type="text" placeholder="Search for Cities.." />
+      </div>
       <div className="nav-right">
         <button className="logout">Logout</button>
       </div>

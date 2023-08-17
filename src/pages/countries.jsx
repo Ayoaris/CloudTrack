@@ -1,7 +1,7 @@
 const Countries = () => {
   return (
     <div className="country-list">
-      <h1>Countries</h1>
+      <h1>Cities</h1>
       <div className="countries">
         <p>Abu Dahbi, AE</p>
         <div>
