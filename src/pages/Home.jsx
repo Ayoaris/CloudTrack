@@ -89,7 +89,7 @@ const Home = () => {
       <Favourite />
       <Countries deleteWeatherData={deleteWeatherData} weather={weatherData} />
       {/* <CountryInfo /> */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

@@ -17,7 +17,10 @@ const Countries = ({ weather, deleteWeatherData }) => {
               <div className="countries">
                 <p>{data?.location?.name}</p>
                 <div>
-                  <p>{data?.current?.temperature}C</p>
+                  <p>{data?.current?.temperature}°C</p>
+                </div>
+                <div>
+                  <p>{data?.current?.weather_descriptions}</p>
                 </div>
               </div>
             </Link>

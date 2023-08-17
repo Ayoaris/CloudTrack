@@ -9,10 +9,9 @@ body {
   padding: 0;
   box-sizing: border-box;
   min-width: 320px;
-  min-height: 100vh;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 20px;
+  /* max-width: 1300px;
+  margin: 0 auto; */
+  /* padding: 0 20px; */
 }
 
 .nav-section {
@@ -20,7 +19,7 @@ body {
   /* background-color: rgb(52, 52, 167); */
   display: flex;
   justify-content: space-between;
-  padding: 10px 0px;
+  padding: 10px 50px;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 .nav-left {
@@ -38,11 +37,13 @@ body {
   color: #0db5df;
 }
 .footer-section {
-  border: 3px solid #0eafd4;
-  color: #0db5df;
-  background-color: rgb(52, 52, 167);
+  margin-top: 50px;
+  color: #fff;
+  background-color: #0db5df;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
   padding: 10px 50px;
 }
 
@@ -62,15 +63,18 @@ body {
 
 .fav-section {
   display: flex;
-  gap: 10px;
-  /* background-color: #bfdbe1; */
+  /* gap: 10px;
+  background-color: #bfdbe1; */
   color: #0db5df;
-  /* padding: 10px 15px; */
+  padding: 10px 15px;
   /* border: 1px solid #0db5df; */
   font-size: 14px;
   align-items: center;
   height: 250px;
   gap: 10px;
+  @media only screen and (max-width: 576px) {
+    flex-direction: column;
+  }
 
   .link {
     text-decoration: none;
@@ -128,7 +132,7 @@ body {
 
 .country-list {
   color: #0db5df;
-  height: 400px;
+  height: auto;
   padding: 5px 0;
   text-align: center;
   width: 100%;
@@ -138,7 +142,6 @@ body {
   text-decoration: none;
 }
 .container {
-  border: 1px red solid;
   display: flex;
   align-items: center;
   width: 850px;
@@ -220,9 +223,7 @@ body {
   .info {
     border-radius: 8px;
     padding: 5px 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   }
 }
 .info-btn {
@@ -269,15 +270,14 @@ textarea {
   padding: 15px 10px;
   outline: none;
   border-radius: 6px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 .search {
   width: 380px;
   height: 50px;
   align-items: center;
   margin: auto;
+  cursor: pointer;
 }
 input {
   width: 100%;
