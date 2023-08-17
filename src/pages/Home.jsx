@@ -1,10 +1,9 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../components/Footer";
 import Favourite from "../components/favourite";
 import Navbar from "../components/navbar";
 import Countries from "./countries";
-import CountryInfo from "./countryInfo";
 
 // 15 list of largest cities in the world by population in alphabetical order
 
@@ -88,7 +87,6 @@ const Home = () => {
       <Navbar handleSearch={handleSearch} />
       <Favourite />
       <Countries deleteWeatherData={deleteWeatherData} weather={weatherData} />
-      {/* <CountryInfo /> */}
       <Footer />
     </div>
   );
