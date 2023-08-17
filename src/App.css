@@ -45,6 +45,7 @@ body {
   text-align: center;
   align-items: center;
   padding: 10px 50px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
 .logout {
@@ -63,11 +64,8 @@ body {
 
 .fav-section {
   display: flex;
-  /* gap: 10px;
-  background-color: #bfdbe1; */
   color: #0db5df;
-  padding: 10px 15px;
-  /* border: 1px solid #0db5df; */
+  padding: 7px 15px;
   font-size: 14px;
   align-items: center;
   height: 250px;
@@ -150,6 +148,7 @@ body {
 }
 .countries {
   display: flex;
+  flex-wrap: wrap;
   flex-wrap: wrap;
   background-color: #0db5df;
   justify-content: space-between;

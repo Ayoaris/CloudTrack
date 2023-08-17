@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import cloudy from "../assets/cloudy.svg";
 
 const Countries = ({ weather, deleteWeatherData }) => {
   return (
@@ -26,7 +27,7 @@ const Countries = ({ weather, deleteWeatherData }) => {
             </Link>
             <button className="remove" onClick={() => deleteWeatherData(data)}>
               {" "}
-              x{" "}
+              -{" "}
             </button>
           </div>
         ))
