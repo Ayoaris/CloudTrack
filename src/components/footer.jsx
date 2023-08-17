@@ -1,7 +1,12 @@
+import logo from "../assets/logo.png";
+
 const Footer = () => {
   return (
-    <div>
-      <h1>Footer</h1>
+    <div className="footer-section">
+      <div>
+        <img src={logo} alt="logo" />
+        <p>ClimaTrack</p>
+      </div>
     </div>
   );
 };
