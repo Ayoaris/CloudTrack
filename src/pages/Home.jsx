@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Footer from "../components/Footer";
 import Favourite from "../components/favourite";
@@ -55,15 +55,39 @@ const Home = () => {
     }
   };
   useEffect(() => {
-    fetchData && fetchData();
+    fetchData();
   }, []);
 
-  // console.log({ weatherData });
+  const deleteWeatherData = (id) => {
+    const filtered = weatherData.filter((el) => el !== id);
+    setWeatherData(filtered);
+    localStorage.setItem("weatherData", JSON.stringify(filtered));
+  };
+
+  const handleSearch = async (e, search) => {
+    if (e.key !== "Enter") return;
+    try {
+      const res = await axios.get(url, {
+        params: {
+          query: search,
+          access_key: "11a3ce213d31cff6a6f53cf5f91b1714",
+          // units: "metric",
+        },
+      });
+
+      setWeatherData([res.data]);
+
+      localStorage.setItem("weatherData", JSON.stringify([res.data]));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
-      <Navbar />
+      <Navbar handleSearch={handleSearch} />
       <Favourite />
-      <Countries weather={weatherData} />
+      <Countries deleteWeatherData={deleteWeatherData} weather={weatherData} />
       {/* <CountryInfo /> */}
       {/* <Footer /> */}
     </div>

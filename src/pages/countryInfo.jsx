@@ -1,8 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CountryInfo = () => {
   const [comment, setComment] = useState("");
+
+  // const [data, setData] = useState({});
 
   const navigate = useNavigate();
 
@@ -38,6 +40,8 @@ const CountryInfo = () => {
     localStorage.setItem("favoriteData", JSON.stringify(newFavoriteData));
 
     alert("Added to favourite");
+
+    navigate("/");
   };
   return (
     <div className="info-section">

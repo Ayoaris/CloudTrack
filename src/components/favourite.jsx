@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Favourite = () => {
   const favoriteData = JSON.parse(localStorage.getItem("favoriteData")) || [];
 
-  console.log({ favoriteData });
+  // console.log({ favoriteData });
   return (
     <div className="fav-section">
       {favoriteData.map((data, i) => (
