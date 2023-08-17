@@ -57,6 +57,8 @@ body {
 }
 
 .fav-section {
+  display: flex;
+  gap: 20px;
   background-color: #bfdbe1;
   color: #0db5df;
   padding: 10px 15px;
@@ -67,6 +69,15 @@ body {
   gap: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+  .link {
+    text-decoration: none;
+    color: #0db5df;
+  }
+  .right-top {
+    display: flex;
+    gap: 10px;
+  }
 
   .fav-card {
     background-color: #fff;
@@ -122,6 +133,10 @@ body {
   text-align: center;
   width: 100%;
   margin: 0 auto;
+
+  .links {
+    text-decoration: none;
+  }
 }
 .countries {
   display: flex;
@@ -164,6 +179,7 @@ body {
   background-color: #fff;
   color: #0db5df;
   border: none;
+  cursor: pointer;
 }
 .x-btn {
   display: flex;
@@ -202,6 +218,20 @@ body {
 }
 .info-btn {
   margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.notes {
+  display: flex;
+  justify-content: space-between;
+  border: 1px #0db5df solid;
+  height: 300px;
+  padding: 5px 10px;
+  align-items: center;
+  border-radius: 6px;
+}
+.note-btn {
   display: flex;
   justify-content: space-between;
   gap: 10px;

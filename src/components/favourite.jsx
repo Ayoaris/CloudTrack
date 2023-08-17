@@ -1,39 +1,51 @@
+import { Link } from "react-router-dom";
+
 const Favourite = () => {
+  const favoriteData = JSON.parse(localStorage.getItem("favoriteData")) || [];
+
+  console.log({ favoriteData });
   return (
     <div className="fav-section">
-      <div className="fav-card">
-        <div className="x-btn">
-          <button className="edit"> x </button>
-        </div>
-        <div className="top-card">
-          <p>Abu Dahbi, AE</p>
-          <p> ICON</p>
-        </div>
-        <div className="bottom-card">
-          <div className="degree">40C</div>
-          <div className="details-wrapper">
-            <div className="details">
-              <span>Details</span>
+      {favoriteData.map((data, i) => (
+        <Link to={`/favorite-countryInfo/${i}`} className="link" key={i}>
+          <div className="fav-card">
+            <div className="top-card">
+              <p>{data.location.name}</p>
+
+              <div className="right-top">
+                <p> ICON</p>
+                <div className="x-btn">
+                  <button className="edit"> x </button>
+                </div>
+              </div>
             </div>
-            <div className="details">
-              <span>Feels like</span>
-              <span>44C</span>
-            </div>
-            <div className="details">
-              <span>Wind</span>
-              <span>5.66 m/s</span>
-            </div>
-            <div className="details">
-              <span>Humidity</span>
-              <span>31</span>
-            </div>
-            <div className="details">
-              <span>Pressure</span>
-              <span>990hps</span>
+            <div className="bottom-card">
+              <div className="degree">{data.current.temperature}°C</div>
+              <div className="details-wrapper">
+                <div className="details">
+                  <span>Details</span>
+                </div>
+                <div className="details">
+                  <span>Feels like</span>
+                  <span>{data.current.feelslike}°C</span>
+                </div>
+                <div className="details">
+                  <span>Wind Speed</span>
+                  <span>{data.current.wind_speed}</span>
+                </div>
+                <div className="details">
+                  <span>Humidity</span>
+                  <span>{data.current.humidity}</span>
+                </div>
+                <div className="details">
+                  <span>Pressure</span>
+                  <span>{data.current.pressure}hps</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </Link>
+      ))}
     </div>
   );
 };

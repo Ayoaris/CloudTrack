@@ -1,16 +1,70 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Footer from "../components/Footer";
 import Favourite from "../components/favourite";
 import Navbar from "../components/navbar";
 import Countries from "./countries";
 import CountryInfo from "./countryInfo";
 
+// 15 list of largest cities in the world by population in alphabetical order
+
+const cities = [
+  "Abu Dhabi",
+  "Amsterdam",
+  "Athens",
+  "Bangkok",
+  "Barcelona",
+  "Beijing",
+  "Berlin",
+  "Bogota",
+  "Brussels",
+  "Buenos Aires",
+  "Cairo",
+  "Cape Town",
+  "Chicago",
+  "Delhi",
+  "Dhaka",
+  "Dubai",
+];
+
+const url = `http://api.weatherstack.com/current`;
+
 const Home = () => {
+  const [weatherData, setWeatherData] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const data = cities.map(async (el) => {
+        const res = await axios.get(url, {
+          params: {
+            query: el,
+            access_key: "11a3ce213d31cff6a6f53cf5f91b1714",
+            // units: "metric",
+          },
+        });
+        return res.data;
+      });
+
+      const result = await Promise.all(data);
+
+      setWeatherData(result);
+
+      localStorage.setItem("weatherData", JSON.stringify(result));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchData && fetchData();
+  }, []);
+
+  // console.log({ weatherData });
   return (
     <div>
       <Navbar />
       <Favourite />
-      <Countries />
-      <CountryInfo />
+      <Countries weather={weatherData} />
+      {/* <CountryInfo /> */}
       {/* <Footer /> */}
     </div>
   );
