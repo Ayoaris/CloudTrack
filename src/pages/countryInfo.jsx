@@ -1,24 +1,35 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 const CountryInfo = () => {
   const [comment, setComment] = useState("");
 
+  const { pathname } = useLocation();
+
   // const [data, setData] = useState({});
 
   const navigate = useNavigate();
 
-  const weatherData = JSON.parse(localStorage.getItem("weatherData"));
+  const weatherData = JSON.parse(localStorage.getItem("weatherData")) || [];
 
   const favoriteData = JSON.parse(localStorage.getItem("favoriteData")) || [];
 
   const { id } = useParams();
 
   const getWeatherData = () => {
-    return weatherData[id];
+    if (pathname === `/${id}`) {
+      return weatherData[id];
+    } else if (pathname === `/favorite-countryInfo/${id}`) {
+      return favoriteData[id];
+    }
+
+    // console.log(id);
+    // weatherData[id];
   };
 
   const data = getWeatherData();
+
+  console.log({ data });
 
   const routeBack = () => {
     navigate(-1);
@@ -43,6 +54,7 @@ const CountryInfo = () => {
 
     navigate("/");
   };
+
   return (
     <div className="info-section">
       <div className="country-list">
@@ -60,12 +72,9 @@ const CountryInfo = () => {
           <p className="info">Humidity: {data.current.humidity}°C</p>
           <p className="info">Pressure: {data.current.pressure}hps</p>
           <label htmlFor="note">Notes</label>
+
           <div className="notes">
-            <p> I love this city</p>
-            <div className=" note-btn">
-              <button className="btn"> Edit</button>
-              <button className="btn"> Delete</button>
-            </div>
+            <p>{data.comment}</p>
           </div>
           <label htmlFor="Comment"> Comment:</label>
           <div className="text">

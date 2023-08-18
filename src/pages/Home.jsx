@@ -31,6 +31,8 @@ const url = `http://api.weatherstack.com/current`;
 const Home = () => {
   const [weatherData, setWeatherData] = useState([]);
 
+  const [favoriteData, setFavoriteData] = useState([]);
+
   const fetchData = async () => {
     try {
       const data = cities.map(async (el) => {
@@ -53,8 +55,14 @@ const Home = () => {
       console.log(error);
     }
   };
+
+  const fetchFavoriteData = () => {
+    const data = JSON.parse(localStorage.getItem("favoriteData")) || [];
+    setFavoriteData(data);
+  };
   useEffect(() => {
     fetchData();
+    fetchFavoriteData();
   }, []);
 
   const deleteWeatherData = (id) => {
@@ -85,7 +93,7 @@ const Home = () => {
   return (
     <div>
       <Navbar handleSearch={handleSearch} />
-      <Favourite />
+      <Favourite favoriteData={favoriteData} />
       <Countries deleteWeatherData={deleteWeatherData} weather={weatherData} />
       <Footer />
     </div>
