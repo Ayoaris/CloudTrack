@@ -71,6 +71,12 @@ const Home = () => {
     localStorage.setItem("weatherData", JSON.stringify(filtered));
   };
 
+  const deleteFavoriteData = (id) => {
+    const filtered = favoriteData.filter((data) => data.id !== id);
+    setFavoriteData(filtered);
+    localStorage.setItem("favoriteData", JSON.stringify(filtered));
+  };
+
   const handleSearch = async (e, search) => {
     if (e.key !== "Enter") return;
     try {
@@ -93,8 +99,15 @@ const Home = () => {
   return (
     <div>
       <Navbar handleSearch={handleSearch} />
-      <Favourite favoriteData={favoriteData} />
-      <Countries deleteWeatherData={deleteWeatherData} weather={weatherData} />
+      <Favourite
+        favoriteData={favoriteData}
+        deleteFavoriteData={deleteFavoriteData}
+      />
+      <Countries
+        deleteWeatherData={deleteWeatherData}
+        // deleteFavoriteData={deleteFavoriteData}
+        weather={weatherData}
+      />
       <Footer />
     </div>
   );

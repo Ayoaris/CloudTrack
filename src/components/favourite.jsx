@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import cloudy from "../assets/cloudy.svg";
 import overcast from "../assets/cloudy-day-3.svg";
@@ -17,15 +17,17 @@ const obj = {
   "Rain With Thunderstorm, Mist": thunder,
 };
 
-const Favourite = ({ favoriteData }) => {
-  console.log({ favoriteData });
-  console.log(favoriteData.map((data) => data.comment));
+const Favourite = ({ favoriteData, deleteFavoriteData }) => {
   return (
     <div className="fav-section">
       {favoriteData &&
         favoriteData.map((data, i) => (
           // console.log({ data }),
-          <Link to={`/favorite-countryInfo/${i}`} className="link" key={i}>
+          <Link
+            to={`/favorite-countryInfo/${data.id}`}
+            className="link"
+            key={i}
+          >
             <div className="fav-card">
               <div className="top-card">
                 <p>{data.location.name}</p>
@@ -35,7 +37,13 @@ const Favourite = ({ favoriteData }) => {
                     <img src={obj[data.current.weather_descriptions]} alt="" />
                   </div>
                   <div className="x-btn">
-                    <button className="edit"> x </button>
+                    <button
+                      onClick={() => deleteFavoriteData(data.id)}
+                      className="edit"
+                    >
+                      {" "}
+                      x{" "}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -72,5 +80,7 @@ const Favourite = ({ favoriteData }) => {
 
 Favourite.propTypes = {
   favoriteData: PropTypes.array.isRequired,
+  // setFavoriteData: PropTypes.func,
+  deleteFavoriteData: PropTypes.func.isRequired,
 };
 export default Favourite;
